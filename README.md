@@ -1,4 +1,4 @@
-# d2wlasso: data-driven weighted lasso
+# sgsl: sparse group-subgroup lasso
 The R package `sgsl` implements the sparse group-subgroup lasso.
 
 The reference for the original pliable lasso can be found at:

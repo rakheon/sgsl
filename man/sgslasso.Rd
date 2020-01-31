@@ -18,5 +18,5 @@ st value
 ST function
 }
 \examples{
-soft_thresh(3,1)
+1+1
 }

@@ -54,11 +54,12 @@ sgsl <- function(x,y,type=c("lasso", "group", "ggroup", "ggroupind", "sgsl")[1],
                                                        file.group="group_group_indlasso_",plots.group=FALSE,plots.subgroup=FALSE,
                                                        plots.ind=FALSE,delta.group=2,delta.subgroup=2,delta.ind=2,
                                                        use.Gram=TRUE,format.data=FALSE,standardize=standardize)
-    } else if (type == "sgsl"){
-        out <- sparse.group.subgroup.computations(microbes=x,phenotypes=y,group.index=index,subgroup.index=index.subgroup,
-                                                  tau=tau,alpha1,alpha2,alpha3,nlam,lambdas,lambda.accuracy,
-                                                  file.group="sgsl_",plots.group=FALSE,delta.group=2,format.data=FALSE,
-                                                  cv.criterion=FALSE,nfold=10,alphas.cv.range=seq(0.1,0.95,by=0.05))
+    } else (type == "sgsl"){
+        out <- NULL
+      #  out <- sparse.group.subgroup.computations(microbes=x,phenotypes=y,group.index=index,subgroup.index=index.subgroup,
+      #                                            tau=tau,alpha1,alpha2,alpha3,nlam,lambdas,lambda.accuracy,
+      #                                            file.group="sgsl_",plots.group=FALSE,delta.group=2,format.data=FALSE,
+      #                                            cv.criterion=FALSE,nfold=10,alphas.cv.range=seq(0.1,0.95,by=0.05))
     }
 
     return(out)

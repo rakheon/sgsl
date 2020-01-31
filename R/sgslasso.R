@@ -2,21 +2,13 @@
 #'
 #' @param x p by N matrix of predictors (N: sample size, p: number of predictors)
 #' @param y 1 by N matrix of response variable
-#' @param type One of "lasso", "group", "ggroup", "ggroupind" or "sgsl". "lasso" for the lasso, "group" for the group lasso, "ggroup" for the group-group lasso and "ggroupind" for the lasso.
-#' #@param index index for groups
+#' @param type One of "lasso", "group", "ggroup", "ggroupind" or "sgsl".
 #' @param index.subgroup index for subgroups
-#' #@param p.group number of predictors in each group
 #' @param tau tau
-#' #@param file.group
-#' #@param plots.group
-#' #@param plots.subgroup
-#' #@param plots.ind
 #' @param delta delta for cross-validation
 #' @param delta.group delta for cross-validation for groups
 #' @param delta.subgroup delta for cross-validation for subgroups
 #' @param delta.ind delta for cross-validation for ind
-#' #@param use.Gram
-#' #@param format.data
 #' @param standardize logical. TRUE for standardizing the data.
 #'
 #' @return out: indicators of the selected predictors. 1 for selected predictors and 0 for not selected predictors

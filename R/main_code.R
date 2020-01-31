@@ -878,7 +878,7 @@ cv.sparse.group <- function(phenotypes,microbes,index,tau,delta,nfold=10,alpha.c
       phenotypes.fold <- t(y[-omit])
       microbes.fold <- t(X[-omit,,drop=FALSE])
       beta.omit <- sparse.group(phenotypes.fold,microbes.fold,index,tau,alpha=alpha,plots=plots,delta=delta,
-                                std.y=std.y,)
+                                std.y=std.y)
 
       ## Find final fit with data omitted
       fit <- X[omit,,drop=FALSE] %*% beta.omit$predict.out

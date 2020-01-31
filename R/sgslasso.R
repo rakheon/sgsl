@@ -2,10 +2,10 @@
 #'
 #' @param x p by N matrix of predictors (N: sample size, p: number of predictors)
 #' @param y 1 by N matrix of response variable
-#' @param type One of "lasso", "group", "ggroup", "ggroupind" or "sgsl".
-#' @param index index for groups
+#' @param type One of "lasso", "group", "ggroup", "ggroupind" or "sgsl". "lasso" for the lasso, "group" for the group lasso, "ggroup" for the group-group lasso and "ggroupind" for the lasso.
+#' #@param index index for groups
 #' @param index.subgroup index for subgroups
-#' @param p.group number of predictors in each group
+#' #@param p.group number of predictors in each group
 #' @param tau tau
 #' #@param file.group
 #' #@param plots.group
@@ -26,11 +26,18 @@
 #' x=matrix(rnorm(100*5, 0, 1),100,5)
 #' y=matrix(rnorm(100*1, 0, 1),100,1)
 sgsl <- function(x,y,type=c("lasso", "group", "ggroup", "ggroupind", "sgsl")[1],
-                 index=NULL,index.subgroup=NULL,p.group=NULL,tau=NULL,plots.ind=FALSE,
-                 #file.group="file",plots.group=FALSE,plots.subgroup=FALSE,
-                 delta=2,delta.group=2,delta.subgroup=2,delta.ind=2,
+                 index.subgroup,#p.group=NULL,index=NULL,
+                 #file.group="file",plots.ind=FALSE,plots.group=FALSE,plots.subgroup=FALSE,
+                 tau=NULL,delta=2,delta.group=2,delta.subgroup=2,delta.ind=2,
                  #use.Gram=TRUE,format.data=FALSE,
                  standardize=TRUE){
+
+    tools <- form.tools(index.subgroup)
+    index <- tools$index
+    p.group <- tools$p.group
+    p.subgroup <- tools$p.subgroup
+    x <- as.data.frame(x)
+    y <- as.data.frame(y)
 
     ## Methods ##
     if (type == "lasso"){

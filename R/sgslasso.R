@@ -65,3 +65,5 @@ sgsl <- function(x,y,type=c("lasso", "group", "ggroup", "ggroupind", "sgsl")[1],
     return(out)
 
 }
+
+

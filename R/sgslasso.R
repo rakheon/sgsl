@@ -23,6 +23,8 @@
 #' @export
 #'
 #' @examples
+#' x=matrix(rnorm(100*5, 0, 1),100,5)
+#'
 sgsl <- function(x,y,type=c("lasso", "group", "ggroup", "ggroupind", "sgsl")[1],
                  index=NULL,index.subgroup=NULL,p.group=NULL,tau=NULL,plots.ind=FALSE,
                  #file.group="file",plots.group=FALSE,plots.subgroup=FALSE,

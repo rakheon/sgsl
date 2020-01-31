@@ -14,8 +14,8 @@ library(MASS)           ## generate from multivariate normals
 ## Source code ##
 #################
 
-source("../main/subgroup_SGL.R")  ## for sparse group-subgroup lasso
-source("../main/mySGLcode.R")     ## SGL code
+#source("../main/subgroup_SGL.R")  ## for sparse group-subgroup lasso
+#source("../main/mySGLcode.R")     ## SGL code
 
 
 ####################################

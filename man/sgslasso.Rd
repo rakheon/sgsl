@@ -4,7 +4,7 @@
 \alias{sgsl}
 \title{ST function}
 \usage{
-sgsl(a, b)
+sgsl(a, lambda)
 }
 \arguments{
 \item{a}{- aa}
@@ -18,5 +18,5 @@ st value
 ST function
 }
 \examples{
-a + b
+a + lambda
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/basic_functions.R
 \name{sgsl}
 \alias{sgsl}
-\title{ST function}
+\title{SGSL}
 \usage{
 sgsl(a, lambda)
 }

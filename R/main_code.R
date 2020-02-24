@@ -23,15 +23,6 @@ library(MASS)           ## generate from multivariate normals
 ####################################
 
 ## function to compute mean and alpha and (1-alpha) quantiles
-
-#' Title
-#'
-#' @param x
-#'
-#' @return
-#' @export
-#'
-#' @examples
 summarize.function <- function(x){
   nsimu <- ncol(x)
 
@@ -71,14 +62,6 @@ summarize.function <- function(x){
 ###################################
 
 ## function to count number of non-NA elements in a vector
-#' Title
-#'
-#' @param x
-#'
-#' @return
-#' @export
-#'
-#' @examples
 number.non.na <- function(x){
   return(sum(!is.na(x)))
 }
@@ -89,15 +72,6 @@ number.non.na <- function(x){
 ## p.group : number of covariates in each group
 ## p.subgroup : matrix of number of covariates in each subgroup (each row corresponds to a group)
 ## index : group assignments
-
-#' Title
-#'
-#' @param index.subgroup
-#'
-#' @return
-#' @export
-#'
-#' @examples
 form.tools <- function(index.subgroup){
   p.group <- apply(index.subgroup,1,number.non.na)
   p.subgroup <- as.numeric(table(index.subgroup))
@@ -116,46 +90,16 @@ form.tools <- function(index.subgroup){
 
 
 ## function to standardize a vector x
-#' Title
-#'
-#' @param x
-#'
-#' @return
-#' @export
-#'
-#' @examples
 make.std <- function(x){
   N <- length(x)
   ( x-mean(x) ) / ( sd(as.vector(x)) * sqrt( N / (N-1) ) )
 }
 
 ## function to center a vector x
-#' Title
-#'
-#' @param x
-#'
-#' @return
-#' @export
-#'
-#' @examples
 make.center <- function(x){
   return(x-mean(x))
 }
 
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param file
-#' @param plots
-#' @param delta
-#' @param std.y
-#' @param use.Gram
-#'
-#' @return
-#' @export
-#'
-#' @examples
 lasso <- function(phenotypes,microbes,file="file",plots=TRUE,delta=2,std.y=TRUE,use.Gram=TRUE){
   y <- t(phenotypes)
   X <- t(microbes)
@@ -221,21 +165,6 @@ lasso <- function(phenotypes,microbes,file="file",plots=TRUE,delta=2,std.y=TRUE,
   list(order.variables=order.variables,sig.variables=sig.variables)
 }
 
-
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param plots
-#' @param file
-#' @param format.data
-#' @param delta
-#' @param use.Gram
-#'
-#' @return
-#' @export
-#'
-#' @examples
 lasso.computations <- function(microbes,phenotypes,plots=TRUE,file="name",format.data = TRUE,delta=2,
 			use.Gram=TRUE){
   if(format.data==TRUE){
@@ -267,24 +196,6 @@ lasso.computations <- function(microbes,phenotypes,plots=TRUE,file="name",format
 ## GROUP LASSO Approach #
 #########################
 
-
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param index
-#' @param tau
-#' @param file
-#' @param plots
-#' @param delta
-#' @param std.y
-#' @param standardize
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.lasso <- function(phenotypes,microbes,index,tau,file="file",plots=TRUE,delta=2,std.y=TRUE,
                         standardize=TRUE){
   y <- t(phenotypes)
@@ -362,25 +273,6 @@ group.lasso <- function(phenotypes,microbes,index,tau,file="file",plots=TRUE,del
 ## PURE GROUP LASSO Approach #
 ##############################
 
-
-
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param index
-#' @param p.group
-#' @param tau
-#' @param file.group
-#' @param plots.group
-#' @param delta.group
-#' @param format.data
-#' @param standardize
-#'
-#' @return
-#' @export
-#'
-#' @examples
 pure.grplasso.computations <- function(microbes,phenotypes,index,p.group,tau,
                                        file.group="file",plots.group=TRUE,delta.group=2,format.data=TRUE,
                                        standardize=TRUE){
@@ -413,26 +305,6 @@ pure.grplasso.computations <- function(microbes,phenotypes,index,p.group,tau,
 ## delta.group : delta applied to C_p criterion for group lasso
 ## delta.subgroup : delta applied to C_p critierian for group lasso among subgroups
 
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param index
-#' @param index.subgroup
-#' @param p.group
-#' @param tau
-#' @param file.group
-#' @param plots.group
-#' @param plots.subgroup
-#' @param delta.group
-#' @param delta.subgroup
-#' @param standardize
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.group.lasso <- function(phenotypes,microbes,index,index.subgroup,p.group,tau,
                               file.group="file",plots.group=TRUE,plots.subgroup=TRUE,delta.group=2,delta.subgroup=2,
                               standardize=TRUE){
@@ -471,26 +343,6 @@ group.group.lasso <- function(phenotypes,microbes,index,index.subgroup,p.group,t
 
 }
 
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param index
-#' @param index.subgroup
-#' @param p.group
-#' @param tau
-#' @param file.group
-#' @param plots.group
-#' @param plots.subgroup
-#' @param delta.group
-#' @param delta.subgroup
-#' @param format.data
-#' @param standardize
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.group.lasso.computations <- function(microbes,phenotypes,index,index.subgroup,p.group,tau,
                                            file.group="file",plots.group=TRUE,plots.subgroup=TRUE,delta.group=2,
                                            delta.subgroup=2,format.data=TRUE,standardize=TRUE){
@@ -529,29 +381,6 @@ group.group.lasso.computations <- function(microbes,phenotypes,index,index.subgr
 ## delta.subgroup : delta applied to C_p critierian for group lasso among subgroups
 ## delta.ind    : delta applied to C_p criterion for lasso with individual features
 
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param index
-#' @param index.subgroup
-#' @param p.group
-#' @param tau
-#' @param file.group
-#' @param plots.group
-#' @param plots.subgroup
-#' @param plots.ind
-#' @param delta.group
-#' @param delta.subgroup
-#' @param delta.ind
-#' @param use.Gram
-#' @param standardize
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.group.indlasso.lasso <- function(phenotypes,microbes,index,index.subgroup,p.group,tau,
                                        file.group="file",plots.group=TRUE,plots.subgroup=TRUE,plots.ind=TRUE,
                                        delta.group=2,delta.subgroup=2,delta.ind=2,use.Gram=TRUE,
@@ -612,30 +441,6 @@ group.group.indlasso.lasso <- function(phenotypes,microbes,index,index.subgroup,
 
 }
 
-
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param index
-#' @param index.subgroup
-#' @param p.group
-#' @param tau
-#' @param file.group
-#' @param plots.group
-#' @param plots.subgroup
-#' @param plots.ind
-#' @param delta.group
-#' @param delta.subgroup
-#' @param delta.ind
-#' @param use.Gram
-#' @param format.data
-#' @param standardize
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.group.indlasso.lasso.computations <- function(microbes,phenotypes,index,index.subgroup,p.group,tau,
                                                     file.group="file",plots.group=TRUE,plots.subgroup=TRUE,
                                                     plots.ind=TRUE,delta.group=2,delta.subgroup=2,delta.ind=2,
@@ -668,29 +473,6 @@ group.group.indlasso.lasso.computations <- function(microbes,phenotypes,index,in
 ## SPARSE GROUP SUBGROUP LASSO #
 ################################
 
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param group.index
-#' @param subgroup.index
-#' @param tau
-#' @param alpha1
-#' @param alpha2
-#' @param alpha3
-#' @param nlam
-#' @param lambdas
-#' @param lambda.accuracy
-#' @param file
-#' @param plots
-#' @param delta
-#' @param std.y
-#'
-#' @return
-#' @export
-#'
-#' @examples
 sparse.group.subgroup <- function(phenotypes,microbes,group.index,subgroup.index,tau,alpha1=0.45,alpha2=0.45,
                                   alpha3=1-alpha1-alpha2,
                                   nlam=100,lambdas=NULL,lambda.accuracy=1e-4,
@@ -769,29 +551,6 @@ sparse.group.subgroup <- function(phenotypes,microbes,group.index,subgroup.index
 }
 
 ## cross-validation code to get one set of alphas for sparse.group.subgroup
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param group.index
-#' @param subgroup.index
-#' @param tau
-#' @param alphas
-#' @param nfold
-#' @param ratio
-#' @param nlam
-#' @param lambdas
-#' @param lambda.accuracy
-#' @param file
-#' @param plots
-#' @param delta
-#' @param std.y
-#'
-#' @return
-#' @export
-#'
-#' @examples
 cv.sparse.group.subgroup.alphas <- function(phenotypes,microbes,group.index,subgroup.index,tau,alphas=NULL,
                                      nfold=10,ratio=1,
                                      nlam=100,lambdas=NULL,lambda.accuracy=1e-4,
@@ -843,16 +602,6 @@ cv.sparse.group.subgroup.alphas <- function(phenotypes,microbes,group.index,subg
   list(alpha.opt=alpha.opt)
 }
 
-
-#' Title
-#'
-#' @param alphas.cv
-#' @param ratio
-#'
-#' @return
-#' @export
-#'
-#' @examples
 make.alphas <- function(alphas.cv=NULL,ratio=1){
   ## Index of fixed alpha
   fixed <- which(lapply(alphas.cv,length)==1)
@@ -877,14 +626,6 @@ make.alphas <- function(alphas.cv=NULL,ratio=1){
 }
 
 ## function to keep those alphas such that sum(alphas) <=1
-#' Title
-#'
-#' @param alphas
-#'
-#' @return
-#' @export
-#'
-#' @examples
 good.alphas <- function(alphas){
   ## Only keep rows such that sum(alphas)<=1
   ind <- which(apply(alphas,1,sum)==1)
@@ -893,29 +634,6 @@ good.alphas <- function(alphas){
   return(alphas)
 }
 
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param group.index
-#' @param subgroup.index
-#' @param tau
-#' @param alphas.cv.range
-#' @param nfold
-#' @param nlam
-#' @param lambdas
-#' @param lambda.accuracy
-#' @param file
-#' @param plots
-#' @param delta
-#' @param std.y
-#' @param sam.implement
-#'
-#' @return
-#' @export
-#'
-#' @examples
 cv.sparse.group.subgroup <- function(phenotypes,microbes,group.index,subgroup.index,tau,
                                      alphas.cv.range=c(seq(0.01,0.1,by=0.01),seq(0.15,0.95,by=0.05)),
                                      nfold=10,nlam=100,lambdas=NULL,lambda.accuracy=1e-4,
@@ -995,32 +713,6 @@ cv.sparse.group.subgroup <- function(phenotypes,microbes,group.index,subgroup.in
   list(sig.variables = Lasso.out$sig.variables, alphas=alpha.opt)
 }
 
-
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param group.index
-#' @param subgroup.index
-#' @param tau
-#' @param alpha1
-#' @param alpha2
-#' @param alpha3
-#' @param nlam
-#' @param lambdas
-#' @param lambda.accuracy
-#' @param file.group
-#' @param plots.group
-#' @param delta.group
-#' @param format.data
-#' @param cv.criterion
-#' @param nfold
-#' @param alphas.cv.range
-#'
-#' @return
-#' @export
-#'
-#' @examples
 sparse.group.subgroup.computations <- function(microbes,phenotypes,group.index,subgroup.index,tau,alpha1,alpha2,
                                                alpha3,nlam,lambdas,
                                                lambda.accuracy,
@@ -1069,22 +761,6 @@ sparse.group.subgroup.computations <- function(microbes,phenotypes,group.index,s
 ## SPARSE GROUP LASSO #
 #######################
 
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param index
-#' @param tau
-#' @param alpha
-#' @param file
-#' @param plots
-#' @param delta
-#' @param std.y
-#'
-#' @return
-#' @export
-#'
-#' @examples
 sparse.group <- function(phenotypes,microbes,index,tau,alpha=0.95,file="file",plots=TRUE,delta=2,std.y=TRUE){
   y <- t(phenotypes)
   X <- t(microbes)
@@ -1163,22 +839,6 @@ sparse.group <- function(phenotypes,microbes,index,tau,alpha=0.95,file="file",pl
 ## Code for cross-validation to select \alpha
 ## nfold : number of folds in cross-validation
 
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param index
-#' @param tau
-#' @param delta
-#' @param nfold
-#' @param alpha.cv
-#' @param plots
-#' @param std.y
-#'
-#' @return
-#' @export
-#'
-#' @examples
 cv.sparse.group <- function(phenotypes,microbes,index,tau,delta,nfold=10,alpha.cv=seq(0.05,0.95,by=0.1),
                             plots=FALSE, std.y=TRUE){
   ## do transpose to get correct dimension
@@ -1238,30 +898,6 @@ cv.sparse.group <- function(phenotypes,microbes,index,tau,delta,nfold=10,alpha.c
 ## delta.group : delta applied to C_p criterion for group lasso
 ## delta.subgroup   : delta applied to C_p critierian for group lasso among subgroups
 
-
-#' Title
-#'
-#' @param phenotypes
-#' @param microbes
-#' @param index
-#' @param index.subgroup
-#' @param p.group
-#' @param tau
-#' @param alpha
-#' @param file.group
-#' @param plots.group
-#' @param plots.subgroup
-#' @param delta.group
-#' @param delta.subgroup
-#' @param standardize
-#' @param cv.criterion
-#' @param nfold
-#' @param alpha.cv
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.sgl.lasso <- function(phenotypes,microbes,index,index.subgroup,p.group,tau,alpha,
                             file.group="file",plots.group=TRUE,plots.subgroup=TRUE,delta.group=2,
                             delta.subgroup=2,standardize=TRUE,
@@ -1307,32 +943,6 @@ group.sgl.lasso <- function(phenotypes,microbes,index,index.subgroup,p.group,tau
 
 }
 
-
-
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param index
-#' @param index.subgroup
-#' @param p.group
-#' @param tau
-#' @param alpha
-#' @param file.group
-#' @param plots.group
-#' @param plots.subgroup
-#' @param delta.group
-#' @param delta.subgroup
-#' @param format.data
-#' @param standardize
-#' @param cv.criterion
-#' @param nfold
-#' @param alpha.cv
-#'
-#' @return
-#' @export
-#'
-#' @examples
 group.sgl.lasso.computations <- function(microbes,phenotypes,index,index.subgroup,p.group,tau,alpha,
                                          file.group="file",plots.group=TRUE,plots.subgroup=TRUE,delta.group=2,
                                          delta.subgroup=2,format.data=TRUE,standardize=TRUE,
@@ -1373,26 +983,6 @@ group.sgl.lasso.computations <- function(microbes,phenotypes,index,index.subgrou
 ## SPARSE GROUP LASSO for group Lasso simulations #
 ###################################################
 
-#' Title
-#'
-#' @param microbes
-#' @param phenotypes
-#' @param index
-#' @param p.group
-#' @param tau
-#' @param alpha
-#' @param file.group
-#' @param plots.group
-#' @param delta.group
-#' @param format.data
-#' @param cv.criterion
-#' @param nfold
-#' @param alpha.cv
-#'
-#' @return
-#' @export
-#'
-#' @examples
 sparse.group.computations <- function(microbes,phenotypes,index,p.group,tau,alpha,
                                       file.group="file",plots.group=TRUE,delta.group=2,format.data=TRUE,
                                       cv.criterion=FALSE, nfold=10, alpha.cv=seq(0.05,0.95,by=0.1)){
@@ -1441,17 +1031,6 @@ sparse.group.computations <- function(microbes,phenotypes,index,p.group,tau,alph
 ## sigma   : model error covariance
 ## index   : vector indicating which covariates are in which groups
 
-#' Title
-#'
-#' @param N
-#' @param p.subgroup
-#' @param beta.coef
-#' @param sigma
-#'
-#' @return
-#' @export
-#'
-#' @examples
 data.group <- function(N,p.subgroup,beta.coef,sigma){
 
     ########################################
